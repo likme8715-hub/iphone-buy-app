@@ -1,0 +1,50 @@
+// Master list of iPhone products used by the app.
+// Adjust prices, stock, storage and img paths as you like.
+// Right now img uses a small set of publicly-hosted demo images; replace with local images in /public/images for better fidelity.
+
+const iphones = [
+  { id: 'iphone-original', name: 'iPhone (1st gen)', storage: '8GB', price: 199, stock: 2, img: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-3g', name: 'iPhone 3G', storage: '8GB', price: 79, stock: 1, img: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-3gs', name: 'iPhone 3GS', storage: '16GB', price: 89, stock: 1, img: 'https://images.unsplash.com/photo-1520975682487-3f1c48e47a09?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-4', name: 'iPhone 4', storage: '16GB', price: 99, stock: 2, img: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-4s', name: 'iPhone 4S', storage: '16GB', price: 109, stock: 2, img: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-5', name: 'iPhone 5', storage: '16GB', price: 129, stock: 3, img: 'https://images.unsplash.com/photo-1520975682487-3f1c48e47a09?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-5c', name: 'iPhone 5c', storage: '16GB', price: 119, stock: 2, img: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-5s', name: 'iPhone 5s', storage: '16GB', price: 139, stock: 3, img: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-se-1', name: 'iPhone SE (1st gen)', storage: '16GB', price: 149, stock: 4, img: 'https://images.unsplash.com/photo-1520975682487-3f1c48e47a09?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-6', name: 'iPhone 6', storage: '16GB', price: 179, stock: 5, img: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-6-plus', name: 'iPhone 6 Plus', storage: '16GB', price: 199, stock: 4, img: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-6s', name: 'iPhone 6s', storage: '16GB', price: 189, stock: 4, img: 'https://images.unsplash.com/photo-1520975682487-3f1c48e47a09?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-6s-plus', name: 'iPhone 6s Plus', storage: '16GB', price: 209, stock: 3, img: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-se-2', name: 'iPhone SE (2nd gen)', storage: '64GB', price: 249, stock: 6, img: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-7', name: 'iPhone 7', storage: '32GB', price: 229, stock: 6, img: 'https://images.unsplash.com/photo-1520975682487-3f1c48e47a09?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-7-plus', name: 'iPhone 7 Plus', storage: '32GB', price: 259, stock: 5, img: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-8', name: 'iPhone 8', storage: '64GB', price: 299, stock: 7, img: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-8-plus', name: 'iPhone 8 Plus', storage: '64GB', price: 349, stock: 6, img: 'https://images.unsplash.com/photo-1520975682487-3f1c48e47a09?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-x', name: 'iPhone X', storage: '64GB', price: 399, stock: 5, img: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-xr', name: 'iPhone XR', storage: '64GB', price: 449, stock: 7, img: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-xs', name: 'iPhone XS', storage: '64GB', price: 499, stock: 4, img: 'https://images.unsplash.com/photo-1520975682487-3f1c48e47a09?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-xs-max', name: 'iPhone XS Max', storage: '64GB', price: 549, stock: 3, img: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-11', name: 'iPhone 11', storage: '64GB', price: 599, stock: 8, img: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-11-pro', name: 'iPhone 11 Pro', storage: '64GB', price: 899, stock: 6, img: 'https://images.unsplash.com/photo-1520975682487-3f1c48e47a09?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-11-pro-max', name: 'iPhone 11 Pro Max', storage: '64GB', price: 999, stock: 5, img: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-se-3', name: 'iPhone SE (3rd gen)', storage: '64GB', price: 429, stock: 10, img: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-12-mini', name: 'iPhone 12 mini', storage: '64GB', price: 699, stock: 7, img: 'https://images.unsplash.com/photo-1520975682487-3f1c48e47a09?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-12', name: 'iPhone 12', storage: '64GB', price: 799, stock: 9, img: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-12-pro', name: 'iPhone 12 Pro', storage: '128GB', price: 999, stock: 5, img: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-12-pro-max', name: 'iPhone 12 Pro Max', storage: '128GB', price: 1099, stock: 4, img: 'https://images.unsplash.com/photo-1520975682487-3f1c48e47a09?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-13-mini', name: 'iPhone 13 mini', storage: '128GB', price: 699, stock: 10, img: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-13', name: 'iPhone 13', storage: '128GB', price: 799, stock: 12, img: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-13-pro', name: 'iPhone 13 Pro', storage: '128GB', price: 999, stock: 8, img: 'https://images.unsplash.com/photo-1520975682487-3f1c48e47a09?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-13-pro-max', name: 'iPhone 13 Pro Max', storage: '256GB', price: 1099, stock: 6, img: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-14', name: 'iPhone 14', storage: '128GB', price: 699, stock: 15, img: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-14-plus', name: 'iPhone 14 Plus', storage: '128GB', price: 799, stock: 10, img: 'https://images.unsplash.com/photo-1520975682487-3f1c48e47a09?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-14-pro', name: 'iPhone 14 Pro', storage: '256GB', price: 999, stock: 9, img: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-14-pro-max', name: 'iPhone 14 Pro Max', storage: '256GB', price: 1099, stock: 7, img: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-15', name: 'iPhone 15', storage: '128GB', price: 799, stock: 14, img: 'https://images.unsplash.com/photo-1520975682487-3f1c48e47a09?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-15-plus', name: 'iPhone 15 Plus', storage: '128GB', price: 899, stock: 11, img: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-15-pro', name: 'iPhone 15 Pro', storage: '256GB', price: 1199, stock: 9, img: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80' },
+  { id: 'iphone-15-pro-max', name: 'iPhone 15 Pro Max', storage: '256GB', price: 1299, stock: 6, img: 'https://images.unsplash.com/photo-1520975682487-3f1c48e47a09?auto=format&fit=crop&w=800&q=80' }
+];
+
+module.exports = iphones;
