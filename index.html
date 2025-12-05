@@ -1,146 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>iPhone Buy App</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>iPhone Buyer</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div id="root"></div>
-  <script src="https://cdn.jsdelivr.net/npm/react@17.0.2/umd/react.development.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.development.js"></script>
-  <script>
-    const { useState } = React;
-    const { render } = ReactDOM;
+  <header>
+    <h1>iPhone Buyer</h1>
+    <p>Browse available iPhones and place a simulated order.</p>
+  </header>
 
-    const iPhoneModels = [
-      {
-        id: "1",
-        name: "iPhone 14",
-        image: "https://www.apple.com/newsroom/images/product/iphone/standard/Apple_iPhone14_pro_09142022_big.jpg",
-        basePrice: 799,
-        storageOptions: [64, 128, 256],
-        colorOptions: ["Space Gray", "Silver", "Gold"],
-        description: "The iPhone 14 is a powerful and feature-rich smartphone with a 6.1-inch display, dual-camera setup, and fast A15 Bionic chip.",
-        features: ["6.1-inch display", "Dual-camera setup", "Fast A15 Bionic chip", "Water-resistant"],
-      },
-      {
-        id: "2",
-        name: "iPhone 14 Pro",
-        image: "https://www.apple.com/newsroom/images/product/iphone/standard/Apple_iPhone14_pro_09142022_big.jpg",
-        basePrice: 999,
-        storageOptions: [128, 256, 512],
-        colorOptions: ["Space Gray", "Silver", "Gold"],
-        description: "The iPhone 14 Pro is a high-end smartphone with a 6.1-inch display, triple-camera setup, and fast A15 Bionic chip.",
-        features: ["6.1-inch display", "Triple-camera setup", "Fast A15 Bionic chip", "Water-resistant"],
-      },
-    ];
+  <main>
+    <section id="products" class="grid"></section>
 
-    const App = () => {
-      const [selectedModel, setSelectedModel] = useState(null);
-      const [selectedStorage, setSelectedStorage] = useState(null);
-      const [selectedColor, setSelectedColor] = useState(null);
-      const [price, setPrice] = useState(0);
+    <section id="checkout" class="card">
+      <h2>Buy iPhone</h2>
+      <form id="purchaseForm">
+        <label for="productSelect">Product</label>
+        <select id="productSelect" required></select>
 
-      const handleModelSelect = (model) => {
-        setSelectedModel(model);
-        setSelectedStorage(null);
-        setSelectedColor(null);
-        setPrice(model.basePrice);
-      };
+        <label for="quantity">Quantity</label>
+        <input id="quantity" type="number" value="1" min="1" required />
 
-      const handleStorageSelect = (storage) => {
-        setSelectedStorage(storage);
-        if (selectedModel) {
-          setPrice(selectedModel.basePrice + (storage - selectedModel.storageOptions[0]) * 100);
-        }
-      };
+        <h3>Buyer Info</h3>
+        <input id="buyerName" placeholder="Full name" required />
+        <input id="buyerEmail" type="email" placeholder="Email" required />
 
-      const handleColorSelect = (color) => {
-        setSelectedColor(color);
-      };
+        <button type="submit">Place Order</button>
+      </form>
+      <div id="message"></div>
+    </section>
 
-      return (
-        <div className="min-h-screen bg-background p-4">
-          <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-            <div className="mx-auto max-w-6xl px-4 py-4">
-              <div className="flex items-center justify-between">
-                <h1 className="text-2xl font-bold text-primary">
-                  iPhone Buy App
-                </h1>
-              </div>
-            </div>
-          </header>
+    <section id="orders" class="card">
+      <h2>Orders (demo)</h2>
+      <ul id="ordersList"></ul>
+    </section>
+  </main>
 
-          <main className="mx-auto max-w-6xl space-y-16 px-4 py-8">
-            <section className="space-y-8">
-              <h2 className="text-3xl font-bold text-foreground">Select iPhone Model</h2>
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {iPhoneModels.map((model) => (
-                  <div key={model.id} className="bg-white p-4 shadow-md" onClick={() => handleModelSelect(model)}>
-                    <h3 className="text-lg font-bold text-foreground">{model.name}</h3>
-                    <img src={model.image} alt={model.name} className="h-64 w-full object-cover" />
-                    <p className="text-lg font-bold text-foreground">${model.basePrice}</p>
-                    <p className="text-sm text-muted-foreground">{model.description}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
+  <footer>
+    <small>Demo app — no real payments. Built by likme8715-hub.</small>
+  </footer>
 
-            {selectedModel && (
-              <section className="space-y-8">
-                <h2 className="text-3xl font-bold text-foreground">Configure Your iPhone</h2>
-                <div className="space-y-4">
-                  <div>
-                    <label>Storage:</label>
-                    {selectedModel.storageOptions.map((storage) => (
-                      <button key={storage} onClick={() => handleStorageSelect(storage)} className="bg-gray-200 hover:bg-gray-300 p-2 mx-2">
-                        {storage}GB
-                      </button>
-                    ))}
-                  </div>
-                  <div>
-                    <label>Color:</label>
-                    {selectedModel.colorOptions.map((color) => (
-                      <button key={color} onClick={() => handleColorSelect(color)} className="bg-gray-200 hover:bg-gray-300 p-2 mx-2">
-                        {color}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </section>
-            )}
-
-            {selectedModel && selectedStorage && selectedColor && (
-              <section className="space-y-8">
-                <h2 className="text-3xl font-bold text-foreground">Summary</h2>
-                <div className="bg-white p-4 shadow-md">
-                  <h3 className="text-lg font-bold text-foreground">Order Summary</h3>
-                  <img src={selectedModel.image} alt={selectedModel.name} className="h-64 w-full object-cover" />
-                  <p className="text-lg font-bold text-foreground">
-                    {selectedModel.name} - {selectedStorage}GB - {selectedColor}
-                  </p>
-                  <p className="text-lg font-bold text-foreground">${price}</p>
-                </div>
-              </section>
-            )}
-
-            {selectedModel && selectedStorage && selectedColor && (
-              <section className="space-y-8">
-                <h2 className="text-3xl font-bold text-foreground">Purchase</h2>
-                <button className="bg-primary hover:bg-primary/90 p-2 mx-2">
-                  Buy Now
-                </button>
-              </section>
-            )}
-          </main>
-        </div>
-      );
-    };
-
-    const root = document.getElementById("root");
-    render(<App />, root);
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
