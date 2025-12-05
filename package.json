@@ -1,0 +1,22 @@
+{
+  "name": "iphone-buyer-web",
+  "version": "1.0.0",
+  "description": "Simple iPhone buyer starter web app (Express backend + static frontend)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": ["iphone", "buyer", "express", "starter"],
+  "author": "likme8715-hub",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
