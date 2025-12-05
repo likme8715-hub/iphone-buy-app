@@ -1,0 +1,149 @@
+import React, { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "/components/ui/card";
+import { Button } from "/components/ui/button";
+
+interface iPhoneModel {
+  id: string;
+  name: string;
+  image: string;
+  basePrice: number;
+  storageOptions: number[];
+  colorOptions: string[];
+  description: string;
+  features: string[];
+}
+
+const iPhoneModels: iPhoneModel[] = [
+  {
+    id: "1",
+    name: "iPhone 14",
+    image: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone14-pro-graphite-select-202209_GEO_EMEA?wid=470&hei=556&fmt=png-alpha&qlt=80&.v=1660750795651",
+    basePrice: 799,
+    storageOptions: [64, 128, 256],
+    colorOptions: ["Space Gray", "Silver", "Gold"],
+    description: "The iPhone 14 is a powerful and feature-rich smartphone with a 6.1-inch display, dual-camera setup, and fast A15 Bionic chip.",
+    features: ["6.1-inch display", "Dual-camera setup", "Fast A15 Bionic chip", "Water-resistant"],
+  },
+  {
+    id: "2",
+    name: "iPhone 14 Pro",
+    image: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone14-pro-graphite-select-202209_GEO_EMEA?wid=470&hei=556&fmt=png-alpha&qlt=80&.v=1660750795651",
+    basePrice: 999,
+    storageOptions: [128, 256, 512],
+    colorOptions: ["Space Gray", "Silver", "Gold"],
+    description: "The iPhone 14 Pro is a high-end smartphone with a 6.1-inch display, triple-camera setup, and fast A15 Bionic chip.",
+    features: ["6.1-inch display", "Triple-camera setup", "Fast A15 Bionic chip", "Water-resistant"],
+  },
+];
+
+const App = () => {
+  const [selectedModel, setSelectedModel] = useState<iPhoneModel | null>(null);
+  const [selectedStorage, setSelectedStorage] = useState<number | null>(null);
+  const [selectedColor, setSelectedColor] = useState<string | null>(null);
+  const [price, setPrice] = useState(0);
+
+  const handleModelSelect = (model: iPhoneModel) => {
+    setSelectedModel(model);
+    setSelectedStorage(null);
+    setSelectedColor(null);
+    setPrice(model.basePrice);
+  };
+
+  const handleStorageSelect = (storage: number) => {
+    setSelectedStorage(storage);
+    if (selectedModel) {
+      setPrice(selectedModel.basePrice + (storage - selectedModel.storageOptions[0]) * 100);
+    }
+  };
+
+  const handleColorSelect = (color: string) => {
+    setSelectedColor(color);
+  };
+
+  return (
+    <div className="min-h-screen bg-background p-4">
+      <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="mx-auto max-w-6xl px-4 py-4">
+          <div className="flex items-center justify-between">
+            <h1 className="text-2xl font-bold text-primary">
+              iPhone Buy App
+            </h1>
+          </div>
+        </div>
+      </header>
+
+      <main className="mx-auto max-w-6xl space-y-16 px-4 py-8">
+        <section className="space-y-8">
+          <h2 className="text-3xl font-bold text-foreground">Select iPhone Model</h2>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {iPhoneModels.map((model) => (
+              <Card key={model.id} onClick={() => handleModelSelect(model)}>
+                <CardHeader>
+                  <CardTitle>{model.name}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <img src={model.image} alt={model.name} className="h-64 w-full object-cover" />
+                  <p className="text-lg font-bold text-foreground">${model.basePrice}</p>
+                  <p className="text-sm text-muted-foreground">{model.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {selectedModel && (
+          <section className="space-y-8">
+            <h2 className="text-3xl font-bold text-foreground">Configure Your iPhone</h2>
+            <div className="space-y-4">
+              <div>
+                <label>Storage:</label>
+                {selectedModel.storageOptions.map((storage) => (
+                  <button key={storage} onClick={() => handleStorageSelect(storage)} className="bg-gray-200 hover:bg-gray-300 p-2 mx-2">
+                    {storage}GB
+                  </button>
+                ))}
+              </div>
+              <div>
+                <label>Color:</label>
+                {selectedModel.colorOptions.map((color) => (
+                  <button key={color} onClick={() => handleColorSelect(color)} className="bg-gray-200 hover:bg-gray-300 p-2 mx-2">
+                    {color}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {selectedModel && selectedStorage && selectedColor && (
+          <section className="space-y-8">
+            <h2 className="text-3xl font-bold text-foreground">Summary</h2>
+            <Card>
+              <CardHeader>
+                <CardTitle>Order Summary</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <img src={selectedModel.image} alt={selectedModel.name} className="h-64 w-full object-cover" />
+                <p className="text-lg font-bold text-foreground">
+                  {selectedModel.name} - {selectedStorage}GB - {selectedColor}
+                </p>
+                <p className="text-lg font-bold text-foreground">${price}</p>
+              </CardContent>
+            </Card>
+          </section>
+        )}
+
+        {selectedModel && selectedStorage && selectedColor && (
+          <section className="space-y-8">
+            <h2 className="text-3xl font-bold text-foreground">Purchase</h2>
+            <Button>
+              Buy Now
+            </Button>
+          </section>
+        )}
+      </main>
+    </div>
+  );
+};
+
+export default App;
